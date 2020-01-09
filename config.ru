@@ -2,8 +2,11 @@ require './config/environment'
 
 begin
   fi_check_migration
-
+ # use Rack::Flash
   use Rack::MethodOverride
+  use ArtistsController
+  use GenresController
+  use SongsController
   run ApplicationController
 rescue ActiveRecord::PendingMigrationError => err
   STDERR.puts err
